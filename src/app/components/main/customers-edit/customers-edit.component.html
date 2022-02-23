@@ -1,0 +1,164 @@
+<app-page-header title="update customer" icon="bi bi-person-plus-fill">
+</app-page-header>
+
+<div class="container m-auto">
+  <form
+    #customerForm="ngForm"
+    (ngSubmit)="onSubmit(customerForm)"
+    novalidate="novalidate"
+    autocomplete="off"
+  >
+    <div class="row form-row justify-content-center mt-5">
+      <div class="form-group col-md-4 p-2">
+        <label for="firstName">
+          <span class="text danger">*</span>
+          First Name:
+        </label>
+        <input
+          #first="ngModel"
+          [(ngModel)]="form.firstName"
+          minlength="2"
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+          required
+          [ngClass]="{
+            'is-invalid': first.invalid && first.touched,
+            'is-valid': first.valid && first.touched
+          }"
+        />
+        <div *ngIf="first.errors?.['required']" class="invalid-feedback">
+          Name is required
+        </div>
+        <div *ngIf="first.errors?.['minlength']" class="invalid-feedback">
+          Name must be at least 2 characters long
+        </div>
+      </div>
+
+      <div class="form-group col-md-4 p-2">
+        <label for="lastName">
+          <span class="text danger">*</span>
+          Last Name:
+        </label>
+        <input
+          #last="ngModel"
+          [(ngModel)]="form.lastName"
+          minlength="2"
+          type="text"
+          class="form-control"
+          id="lastName"
+          name="lastName"
+          required
+          [ngClass]="{
+            'is-invalid': first.invalid && first.touched,
+            'is-valid': first.valid && first.touched
+          }"
+        />
+        <div *ngIf="last.errors?.['required']" class="invalid-feedback">
+          Last name is required
+        </div>
+        <div *ngIf="last.errors?.['minlength']" class="invalid-feedback">
+          Name must be at least 2 characters long
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="form-group col-md-4 p-2">
+        <label for="email">
+          <span class="text danger">*</span>
+          Email:
+        </label>
+        <input
+          #emailF="ngModel"
+          [(ngModel)]="form.email"
+          pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          required
+          [ngClass]="{
+            'is-invalid': emailF.invalid && emailF.touched,
+            'is-valid': emailF.valid && emailF.touched
+          }"
+        />
+
+        <div *ngIf="emailF.errors?.['required']" class="invalid-feedback">
+          Email is require
+        </div>
+        <div *ngIf="emailF.errors?.['pattern']" class="invalid-feedback">
+          Invalid email address
+        </div>
+      </div>
+      <div class="form-group col-md-4 p-2">
+        <label for="phone">
+          <span class="text danger">*</span>
+          Phone:
+        </label>
+        <input
+          #phoneF="ngModel"
+          [(ngModel)]="form.phone"
+          type="text"
+          class="form-control"
+          id="phone"
+          name="phone"
+          required
+          pattern="^0[2-9]\d{7,8}$"
+          [ngClass]="{
+            'is-invalid': phoneF.invalid && phoneF.touched,
+            'is-valid': phoneF.valid && phoneF.touched
+          }"
+        />
+        <div *ngIf="phoneF.errors?.['required']" class="invalid-feedback">
+          Phone number is require
+        </div>
+        <div *ngIf="phoneF.errors?.['pattern']" class="invalid-feedback">
+          Invalid phone number
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-8 m-auto">
+        <label for="address">Address:</label>
+        <input
+          #addressF="ngModel"
+          [(ngModel)]="form.address"
+          name="address"
+          type="text"
+          class="form-control"
+          id="address"
+        />
+      </div>
+    </div>
+    <div class="form-group col-8 m-auto">
+      <div class="mt-4">
+        <label for="notes">Notes:</label>
+      </div>
+      <textarea
+        #notesF="ngModel"
+        [(ngModel)]="form.notes"
+        class="form-control"
+        id="notes"
+        name="notes"
+        cols="20"
+        rows="5"
+      ></textarea>
+    </div>
+
+    <div class="row justify-content-cente">
+      <div class="text-center p-3">
+        <a routerLink=".." class="btn btn-l bg-secondary ms-2">Cencel</a>
+
+        <input
+          [disabled]="customerForm.invalid"
+          type="submit"
+          value="Update"
+          class="btn btn-l bg-secondary ms-2"
+        />
+      </div>
+    </div>
+  </form>
+</div>

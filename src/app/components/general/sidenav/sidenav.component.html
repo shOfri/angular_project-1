@@ -1,0 +1,15 @@
+<ul *ngIf="navItems.length" class="nav flex-column pt-2">
+  <li *ngFor="let navItem of navItems" class="mt-1 text-nowrap">
+    <a
+      [routerLink]="navItem.link"
+      routerLinkActive="active"
+      class="nav-link text-white"
+    >
+      <span>
+        <i [class]="navItem.icon"></i>
+
+        {{ navItem.title | titlecase }}
+      </span>
+    </a>
+  </li>
+</ul>

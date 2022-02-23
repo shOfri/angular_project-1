@@ -1,0 +1,27 @@
+body {
+  background-image: linear-gradient(
+    rgba(0, 153, 255, 0.329),
+    rgba(132, 0, 255, 0.192)
+  );
+  height: 100%;
+  .container-fluid {
+    width: 450px;
+    height: 100%;
+
+    .container {
+      color: rgba(0, 0, 0, 0.623);
+
+      background-image: linear-gradient(
+        rgba(65, 107, 134, 0.233),
+        rgba(152, 100, 201, 0.432)
+      );
+      background-size: cover;
+
+      border-radius: 6% /12%;
+      box-shadow: -1.2em -1em 1em rgba(81, 82, 83, 0.24);
+      padding: 7%;
+      width: 400px;
+      height: 100%;
+    }
+  }
+}

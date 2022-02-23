@@ -1,0 +1,66 @@
+<app-page-header
+  title="contacts"
+  icon="bi bi-envelope-fill"
+  description="Company employeed details"
+></app-page-header>
+
+<div class="row mt-3">
+  <form class="form-inline d-flex">
+    <a class="search btn btn-sm btn-secondary" role="button"
+      ><i class="bi bi-search"></i
+    ></a>
+    <input
+      [(ngModel)]="nameTerm"
+      name="nameTer"
+      id="name-term"
+      type="text"
+      placeholder="Search name"
+      autofocus
+    />
+  </form>
+</div>
+
+<div class="row-12 mt-3">
+  <table *ngIf="contacts.length; else noContacts" class="table table-bordered">
+    <thead>
+      <tr>
+        <td>No.</td>
+        <td>Name:</td>
+        <td>Email:</td>
+        <td>Birthday:</td>
+        <td>Phones:</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr
+        *ngFor="
+          let contact of contacts | contactsFilter: 'name':nameTerm;
+          index as i
+        "
+      >
+        <td>{{ i + 1 }}</td>
+        <td>{{ contact.name | titlecase }}</td>
+        <td>
+          <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+        </td>
+        <td>{{ contact.birthday | date: "dd/MM/Y" }}</td>
+
+        <td>
+          <ul *ngIf="contact.phones.length; else noPhones">
+            <li *ngFor="let phone of contact.phones">
+              <a [href]="'tel:' + phone">{{ phone }}</a>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noContacts>
+  <p>No contacts...</p>
+</ng-template>
+<ng-template #noPhones>
+  <p class="ms-3">No phones.</p>
+</ng-template>

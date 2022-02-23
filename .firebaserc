@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "crm-pro-121": {
+      "hosting": {
+        "crm-pro": [
+          "crm-pro-121"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "crm-pro-121"
+  }
+}

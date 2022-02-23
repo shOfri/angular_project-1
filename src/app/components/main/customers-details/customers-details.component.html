@@ -1,0 +1,42 @@
+<app-page-header
+  title="customer details"
+  icon="bi bi-person-fill"
+  description="About customer."
+></app-page-header>
+
+<div class="mt-4">
+  <div class="row">
+    <div class="col-12">
+      <table *ngIf="customer$ | async as customer" class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="col-2">First Name:</td>
+
+            <td>{{ customer.firstName }}</td>
+          </tr>
+
+          <tr>
+            <td>Last Name:</td>
+            <td>{{ customer.lastName }}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{{ customer.email }}</td>
+          </tr>
+          <tr>
+            <td>Phone:</td>
+            <td>{{ customer.phone }}</td>
+          </tr>
+          <tr>
+            <td>Address:</td>
+            <td>{{ customer.address }}</td>
+          </tr>
+          <tr>
+            <td>Notes:</td>
+            <td>{{ customer.notes }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
